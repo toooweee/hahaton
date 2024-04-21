@@ -1,26 +1,32 @@
-import {BaseEntity, Column, Entity, OneToOne, PrimaryGeneratedColumn} from "typeorm";
-import {User} from "../../user/entities/user.entity";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from '../../user/entities/user.entity';
 
 @Entity()
 export class Student extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    university: string;
+  @Column()
+  university: string;
 
-    @Column()
-    faculty: string;
+  @Column()
+  faculty: string;
 
-    @Column()
-    department: string;
+  @Column()
+  department: string;
 
-    @Column()
-    group: string;
+  @Column()
+  group: string;
 
-    @Column()
-    course: string;
+  @Column()
+  course: string;
 
-    @OneToOne(() => User, user => user.student)
-    user: User;
+  @OneToOne(() => User, (user) => user.student)
+  user: User;
 }

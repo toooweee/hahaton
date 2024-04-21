@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { UniversityAgentService } from './university-agent.service';
 import { CreateUniversityAgentDto } from './dto/create-university-agent.dto';
 import { UpdateUniversityAgentDto } from './dto/update-university-agent.dto';
 
 @Controller('university-agent')
 export class UniversityAgentController {
-  constructor(private readonly universityAgentService: UniversityAgentService) {}
+  constructor(
+    private readonly universityAgentService: UniversityAgentService,
+  ) {}
 
   @Post()
   create(@Body() createUniversityAgentDto: CreateUniversityAgentDto) {
@@ -23,7 +33,10 @@ export class UniversityAgentController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUniversityAgentDto: UpdateUniversityAgentDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateUniversityAgentDto: UpdateUniversityAgentDto,
+  ) {
     return this.universityAgentService.update(+id, updateUniversityAgentDto);
   }
 

@@ -6,15 +6,15 @@ import { Repository } from 'typeorm';
 import * as argon2 from 'argon2';
 import { JwtService } from '@nestjs/jwt';
 import { Student } from '../student/entities/student.entity';
-import {Employee} from "../employee/entities/employee.entity";
-import {UniversityAgent} from "../university-agent/entities/university-agent.entity";
+import { Employee } from '../employee/entities/employee.entity';
+import { UniversityAgent } from '../university-agent/entities/university-agent.entity';
 
 @Injectable()
 export class UserService {
   constructor(
-      @InjectRepository(User)
-      private readonly userRepository: Repository<User>,
-      private readonly jwtService: JwtService,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+    private readonly jwtService: JwtService,
   ) {}
 
   async createUser(createUserDto: CreateUserDto) {
@@ -75,6 +75,14 @@ export class UserService {
       where: {
         email,
       },
+    });
+  }
+
+  async findById(id: number): Promise<User> {
+    return await this.userRepository.findOne({
+      where: {
+        id,
+      }
     });
   }
 }

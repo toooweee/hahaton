@@ -1,13 +1,13 @@
-import {BaseEntity, Entity, OneToOne, PrimaryGeneratedColumn} from "typeorm";
-import {User} from "../../user/entities/user.entity";
+import { BaseEntity, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from '../../user/entities/user.entity';
 
 @Entity()
 export class UniversityAgent extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    // todo
+  // todo
 
-    @OneToOne(() => User, user => user.universityAgent)
-    user: User;
+  @OneToOne(() => User, (user) => user.universityAgent)
+  user: User;
 }
